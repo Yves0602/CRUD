@@ -62,12 +62,9 @@ public class UserControllerTest  {
     @Test
     @Transactional
     public void shouldFind1(){
-        String expected="Optional[User{id=1\n" +
-                "name=Jim\n" +
-                "password=password\n" +
-                "content=this is jim\n" +
-                "}]";
-        Assert.assertEquals(expected,userController.findById(1).toString());
+        Boolean expected = true;
+        Assert.assertEquals(expected,userController.findById(1).isPresent());
+
     }
 
     @Test
