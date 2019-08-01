@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.entity.User;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ public class UserDaotest {
 
     @Test
     public  void test1(){
+        int excepted = 1;
         List<User> user =  userDao.findByNameAndPassword("Jim","password");
-        System.out.println(user);
+        Assert.assertEquals(excepted,user.size());
     }
 }

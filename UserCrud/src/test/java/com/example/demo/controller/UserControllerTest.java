@@ -73,11 +73,23 @@ public class UserControllerTest  {
     @Test
     @Transactional
     public void shouldFind2(){
-        String expected ="[User{id=1\n" +
+        int expected =1;
+        String need = "User{id=1\n" +
+            "name=Jim\n" +
+                    "password=password\n" +
+                    "content=this is jim\n" +
+                    "}";
+        Assert.assertEquals(expected,userController.findByNAndP("Jim","password").size());
+        Assert.assertEquals(need,userController.findByNAndP("Jim","password").get(0).toString());
+    }
+    @Test
+    @Transactional
+    public void shouldFind3(){
+        String expected ="User{id=1\n" +
                 "name=Jim\n" +
                 "password=password\n" +
                 "content=this is jim\n" +
-                "}]";
-        Assert.assertEquals(expected,userController.findByNAndP("Jim","password").toString());
+                "}";
+        Assert.assertEquals(expected,userController.list().get(0).toString());
     }
 }
